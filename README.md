@@ -15,9 +15,14 @@
 	-  very low scene variation
 
 #### Our experiment
+- have pilots for 3 and 6 stimuli
+- utterance choice probabilistically, inspired by typicality study
+- only visually presented utterances so far
+
+##### To Do
+- Improve stimuli (e.g., improve orange pear, get rid of avocado)
+- Have written and auditory cues (in separate experiments)
 - Open questions
-	- auditory cue?
-	- amount of objects in the scene
-	- same stimuli as in typicality study?
 	- how to encode selection of an item (which keys to press)
 	- when to identify time onset?
+	- idea: take utterances from bda to get "human-like" refExp distribution (maybe also say that the refExps come from a previous experiment to ensure they expect human-like rational utterances)
