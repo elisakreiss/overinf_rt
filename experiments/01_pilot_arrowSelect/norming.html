@@ -7,34 +7,34 @@
     <!--JS-->
 
     <!-- external general utilities -->
-    <script src="../../_shared/js/jquery-1.11.1.min.js "></script>
-    <script src="../../_shared/full-projects/jquery-ui/jquery-ui.min.js"></script>
-    <script src="../../_shared/js/underscore-min.js"></script>
+    <script src="../_shared/js/jquery-1.11.1.min.js "></script>
+    <script src="../_shared/full-projects/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../_shared/js/underscore-min.js"></script>
     <!-- if you want to draw stuff: -->
     <!-- <script src="../_shared/js/raphael-min.js"></script> -->
 
     <!-- cocolab experiment logic -->
-    <script src="../../_shared/js/exp-V2.js"></script>
-    <script src="../../_shared/js/stream-V2.js"></script>
+    <script src="../_shared/js/exp-V2.js"></script>
+    <script src="../_shared/js/stream-V2.js"></script>
 
     <!-- cocolab general utilities -->
-    <script src="../../_shared/js/mmturkey.js "></script>
-    <script src="../../_shared/js/browserCheck.js"></script>
+    <script src="../_shared/js/mmturkey.js "></script>
+    <script src="../_shared/js/browserCheck.js"></script>
     <!-- if you want to draw cute creatures (depends on raphael): -->
     <!-- <script src="../_shared/js/ecosystem.js"></script> -->
 
     <!-- experiment specific helper functions -->
-    <script src="../../_shared/js/utils.js"></script>
-    <script src="../../_shared/preload.js"></script>   
+    <script src="../_shared/js/utils.js"></script>
+    <script src="../_shared/preload.js"></script>   
 
     <!-- dragging utilities --> 
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-  	<script src="../../_shared/node_modules/interact.js/interact.js"></script>
+  	<script src="../_shared/node_modules/interact.js/interact.js"></script>
 
     <!--CSS-->
-    <link href="../../_shared/full-projects/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../../_shared/css/cocolab-style.css" rel="stylesheet" type="text/css"/>
+    <link href="../_shared/full-projects/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../_shared/css/cocolab-style.css" rel="stylesheet" type="text/css"/>
     <link href="css/local-style.css" rel="stylesheet" type="text/css"/>
 
     <!-- experiment file -->
@@ -46,7 +46,7 @@
   <noscript>This task requires JavaScript.</noscript>
 
   <div class="slide" id="i0" >
-    <img src="../../_shared/images/alpslogo.png" alt="Stanford ALPS" id="alpslogo" style="width:50%"></img>
+    <img src="../_shared/images/alpslogo.png" alt="Stanford ALPS" id="alpslogo" style="width:50%"></img>
     <!-- <p id="alps">Stanford ALPS</p> -->
     <p id="instruct-text">Thank you for participating in our study. 
       In this study, you will read a sentence and select one out of three objects, 
@@ -66,7 +66,7 @@
   </div>
 
   <div class="slide" id="intro" >
-    <img src="../../_shared/images/alpslogo.png" alt="Stanford ALPS" id="alpslogo" style="width:50%"></img>
+    <img src="../_shared/images/alpslogo.png" alt="Stanford ALPS" id="alpslogo" style="width:50%"></img>
     <p id="story">In this experiment, you are given a set of objects and a sentence describing one of them. It is your task to click on the described object as fast as possible. If you fail to select the correct object in one trial, this trial is judged as a failed one. Below you can see an example trial.<br />
     <br>
     <img src="pictures/sample_context.png"  style="width:50%;"></img> <br />
@@ -76,29 +76,62 @@
     <button id="agree_button" type="button">Let's go!</button>
   </div>
 
-  <div class="slide" id="clickObj">
 
-    <br>
-    <br>
-    <br>
+
+  <div class="slide" id="trial">
+
+    <h3>Example</h3>
+
+    <p id="keyboard_instr" class="trial_instr">Please, place your right hand on the arrows on your keyboard and the left hand on your space bar. To continue, press the space bar.</p>
+    <img id="keyboard_pos" src="pictures/keyboard_hands.jpg" width="80%">
  
-    <table id="tblMain" border="1pt">
+    <table id="example_context" border="1pt" style="visibility: hidden">
       <tbody><tr>
         <td id="img_0"></td>
         <td id="img_1"></td>
         <td id="img_2"></td>
       </tr></tbody>
     </table>
-
     <br>
 
-    <div id="sentence">
-      <button id="showRefExp">Show sentence!</button>
-      <p id="refExp" style="visibility: hidden">{{}}</p>
-      <p id="error" style="visibility: hidden">Please, look at the sentence by clicking "Show sentence!" and try to identify the correct target.</p>
-    </div>
+    <button id="showExampleRefExp">Show sentence!</button>
+    <p id="exampleRefExp">{{}}</p>
 
-  	<button id=submitObj onclick="_s.button()" style="visibility: hidden">Submit</button>
+    <button id="start_exp_button" type="button">Yey!</button>
+    <p id="trial_instr1" class="trial_instr">To show the sentence, press the space bar.</p>
+    <p id="trial_instr2" class="trial_instr">To select a target, use the arrows on your keyboard (left, upper and right key for the left, middle and right image).</p>
+    <p id="trial_instr3" class="trial_instr">You can now either press the space bar to begin the experiment or change your choice.</p>
+
+    <p id="exampleErrorShow" class="error">Oops, something went wrong! Please, look at the sentence by pressing the space bar to show the sentence and try to identify the correct target.</p>
+    <p id="exampleErrorChoose" class="error">Oops, something went wrong! Please choose a target by pressing the left, right or upper arrow.</p>
+    <p id="exampleErrorSubmit" class="error">Oops, something went wrong! If you want to submit, please press the space bar. If you want to change your choice, press the corresponding arrow key.</p>
+    <p id="exampleErrorInstr" class="error">Oops, something went wrong! If you want to continue, press the space bar.</p>
+
+  </div>
+
+
+  <div class="slide" id="clickObj">
+
+    <br>
+    <br>
+    <br>
+    <table id="context" border="1pt">
+      <tbody><tr>
+        <td id="pic_0"></td>
+        <td id="pic_1"></td>
+        <td id="pic_2"></td>
+      </tr></tbody>
+    </table>
+    <br>
+
+    <button id="showRefExp">Show sentence!</button>
+    <p id="refExp">{{}}</p>
+
+  	<button id="submitObj">Submit</button>
+    <p id="errorSubmit" class="error">Oops, something went wrong! If you want to submit, please press the space bar. If you want to change your choice, press the corresponding arrow key.</p>
+    <p id="errorShow" class="error">Oops, something went wrong! Please look at the sentence by pressing the space bar to show the sentence and try to identify the correct target.</p>
+    <p id="errorChoose" class="error">Oops, something went wrong! Please choose a target by pressing the left, right or upper arrow.</p>
+
   </div>
 
   <!-- DON'T CHANGE THIS: SUBJECT INFORMATION -->
